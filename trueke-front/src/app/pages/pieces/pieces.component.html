@@ -1,0 +1,28 @@
+<div class="container mx-auto py-10">
+  <!-- create button -->
+  <div class="flex justify-end items-center mb-6">
+    <button (click)="onCreatePieceClick()" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
+      Create New Piece
+    </button>
+  </div>
+
+  <!-- forniture grid view -->
+  @if ((pieces$ | async)?.length !== 0) {
+    <card-grid-view [items]="(pieces$ | async) ?? []" (onItemClick)="onPieceClick($event)"></card-grid-view>
+  } @else {
+  <div class="text-center text-gray-500 my-10">
+    <h2 class="text-2xl font-bold">No Pieces of Furniture Available</h2>
+    <p>Please create a new piece using the button above.</p>
+  </div>
+  }
+
+  <!-- piece details modal -->
+  <ng-container *ngIf="selectedPiece && !creatingModalShown">
+    <piece-details [piece]="selectedPiece" (close)="onCloseDetailModal()" (edit)="onEditPiece()" (delete)="onDeletePiece()"></piece-details>
+  </ng-container>
+
+  <!-- create piece modal -->
+  <ng-container *ngIf="creatingModalShown">
+    <create-piece-window [piece]="selectedPiece" (close)="onCloseCreatingModal()"></create-piece-window>
+  </ng-container>
+</div>

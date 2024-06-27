@@ -1,0 +1,15 @@
+.swiper-container {
+  width: 100%;
+  max-width: 1024px; // Set a maximum width to constrain the container
+  margin: 0 auto;
+}
+
+.swiper-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.offer-card {
+  flex: 0 0 auto; // Prevent flex items from growing beyond their content
+  max-width: 320px; // Constrain the width of each card
+}

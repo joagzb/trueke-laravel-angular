@@ -1,0 +1,60 @@
+<nav class="bg-light-teal text-light-soft-grey dark:bg-dark-charcoal dark:text-dark-light-grey p-4 z-10">
+  <div class="container mx-auto flex justify-between items-center space-x-5 px-2">
+    <div class="flex items-center space-x-5">
+      <a routerLink="{{this.navigationService.routes.home}}" routerLinkActive="active" class="text-2xl font-bold cursor-pointer">Trueke Logo</a>
+      <ul class="hidden lg:flex space-x-5 items-center">
+        <li><a routerLink="{{this.navigationService.routes.home}}" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">Home</a></li>
+        <li><a routerLink="{{this.navigationService.routes.contact}}" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">Contact</a></li>
+        @if (authStatus$ | async) {
+          <li><a (click)="navigateTo(this.navigationService.routes.listings.byUser)" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">My Listings</a></li>
+          <li><a (click)="navigateTo(this.navigationService.routes.offers.byUser)" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">My Offers</a></li>
+          <li><a routerLink="{{this.navigationService.routes.exchanges}}" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">My Exchanges</a></li>
+        }
+      </ul>
+    </div>
+
+     <!-- Mobile Menu Button -->
+     <button class="lg:hidden text-2xl" (click)="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Auth Buttons / Dropdown -->
+    <div class="hidden lg:flex space-x-2 items-center">
+      @if (authStatus$ | async) {
+        <button routerLink="{{this.navigationService.routes.listings.new}}" routerLinkActive="active" ariaCurrentWhenActive="page" class="bg-light-coral text-white px-4 py-2 rounded hover:bg-light-coral-dark cursor-pointer">New Post</button>
+        <div class="relative">
+          <a (click)="toggleDropdown()" class="hover:text-light-soft-grey cursor-pointer hover:underline">Menu</a>
+          @if (isDropdownOpen) {
+            <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-dark-charcoal shadow-lg rounded-md z-20">
+              <a (click)="navigateTo(this.navigationService.routes.user)" routerLinkActive="active" ariaCurrentWhenActive="page" class="block px-4 py-2 text-light-teal rounded cursor-pointer hover:bg-light-coral hover:text-white">Profile</a>
+              <a (click)="navigateTo(this.navigationService.routes.pieces)" routerLinkActive="active" ariaCurrentWhenActive="page" class="block px-4 py-2 text-light-teal cursor-pointer hover:bg-light-coral hover:text-white">My Pieces</a>
+              <button (click)="logout()" class="block w-full text-left px-4 py-2 rounded text-light-teal hover:bg-light-coral hover:text-white">Logout</button>
+            </div>
+          }
+        </div>
+      } @else {
+        <button routerLink="{{this.navigationService.routes.auth.signin}}" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">Login / Signup</button>
+      }
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div *ngIf="isMobileMenuOpen" class="lg:hidden">
+    <ul class="flex flex-col items-center space-y-4 mt-4">
+      @if (authStatus$ | async) {
+        <li><a (click)="navigateTo(this.navigationService.routes.user)" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">Profile</a></li>
+        <li><button routerLink="{{this.navigationService.routes.listings.new}}" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">New Post</button></li>
+      }
+      <li><a routerLink="{{this.navigationService.routes.contact}}" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">Contact</a></li>
+      @if (authStatus$ | async) {
+        <li><a (click)="navigateTo(this.navigationService.routes.pieces)" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">My Pieces</a></li>
+        <li><a (click)="navigateTo(this.navigationService.routes.listings.byUser)" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">My Listings</a></li>
+        <li><a (click)="navigateTo(this.navigationService.routes.offers.byUser)" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">My Offers</a></li>
+        <li><a routerLink="{{this.navigationService.routes.exchanges}}" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer">My Exchanges</a></li>
+        <li><button (click)="logout()" class="hover:text-light-coral cursor-pointer">Logout</button></li>
+      }@else {
+        <li><a routerLink="{{this.navigationService.routes.auth.signin}}" routerLinkActive="active" ariaCurrentWhenActive="page" class="hover:text-light-coral cursor-pointer text-center">Login / Signup</a></li>
+      }
+    </ul>
+  </div>
+</nav>

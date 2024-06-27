@@ -1,0 +1,97 @@
+<div class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4">
+  <div class="relative bg-white w-full max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl rounded-lg shadow-lg overflow-hidden max-h-full overflow-y-auto">
+    <div class="flex justify-between items-center p-4 border-b border-gray-300">
+      <h2 class="text-xl font-bold mx-auto">{{ piece ? 'Edit Piece' : 'Create New Piece' }}</h2>
+      <button (click)="onCancel()" class="text-gray-600 hover:text-gray-900 absolute right-4">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="p-6">
+      <form [formGroup]="pieceForm" (ngSubmit)="onSubmit()">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="title" class="block text-sm font-bold mb-2">Title:</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                <i class="fas fa-pencil-alt text-gray-500"></i>
+              </span>
+              <input formControlName="title" class="w-full border rounded p-2 pl-10" />
+            </div>
+            <input-error-msg [control]="formControls['title']" controlName="title"></input-error-msg>
+          </div>
+          <div>
+            <label for="imageURL" class="block text-sm font-bold mb-2">Image URL:</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                <i class="fas fa-link text-gray-500"></i>
+              </span>
+              <select formControlName="imageURL" class="w-full border rounded p-2 pl-10">
+                <option value=" https://placehold.co/600x400?text=BED">bed</option>
+                <option value=" https://placehold.co/600x400?text=CHAIR">chair</option>
+                <option value=" https://placehold.co/600x400?text=TABLE">table</option>
+              </select>
+            </div>
+            <input-error-msg [control]="formControls['imageURL']" controlName="imageURL"></input-error-msg>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="description" class="block text-sm font-bold mb-2">Description:</label>
+          <div class="relative">
+            <textarea id="description" formControlName="description" class="w-full border rounded p-2"></textarea>
+            <input-error-msg [control]="formControls['description']" controlName="description"></input-error-msg>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div>
+            <label for="brand" class="block text-sm font-bold mb-2">Brand:</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                <i class="fas fa-tag text-gray-500"></i>
+              </span>
+              <input id="brand" formControlName="brand" class="w-full border rounded p-2 pl-10" />
+              <input-error-msg [control]="formControls['brand']" controlName="brand"></input-error-msg>
+            </div>
+          </div>
+          <div>
+            <label for="material" class="block text-sm font-bold mb-2">Material:</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                <i class="fas fa-cube text-gray-500"></i>
+              </span>
+              <input id="material" formControlName="material" class="w-full border rounded p-2 pl-10" />
+            </div>
+            <input-error-msg [control]="formControls['material']" controlName="material"></input-error-msg>
+          </div>
+          <div>
+            <label for="price" class="block text-sm font-bold mb-2">Price:</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                <i class="fas fa-dollar-sign text-gray-500"></i>
+              </span>
+              <input id="price" formControlName="price" class="w-full border rounded p-2 pl-10" />
+            </div>
+            <input-error-msg [control]="formControls['price']" controlName="price"></input-error-msg>
+          </div>
+        </div>
+        <label for="room" class="block text-sm font-bold mb-2">Designated Room:</label>
+        <div class="relative">
+          <div class="mb-4">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+              <i class="fas fa-home text-gray-500"></i>
+            </span>
+            <select formControlName="room" class="w-full border rounded p-2 pl-10">
+              @for (room of rooms; track $index) {
+              <option [value]="room">{{ room }}</option>
+              }
+            </select>
+          </div>
+          <input-error-msg [control]="formControls['room']" controlName="room"></input-error-msg>
+        </div>
+        <div class="flex justify-center mt-6">
+          <button type="button" (click)="onCancel()" class="bg-light-dark-slate-grey text-white py-2 px-4 rounded mr-2 hover:transparent transition duration-300">Cancel</button>
+          <button type="submit" class="bg-light-golden-yellow text-light-dark-slate-grey py-2 px-4 rounded hover:bg-light-coral hover:text-soft-grey transition duration-300">{{ piece ? 'Update' : 'Create' }}</button>
+        </div>
+      </form>
+  </div>
+  </div>
+</div>

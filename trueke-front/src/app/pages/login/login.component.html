@@ -1,0 +1,13 @@
+<div class="min-h-screen flex items-center justify-center bg-light-soft-grey dark:bg-dark-charcoal">
+  <div class="w-full max-w-lg">
+    @if (registerNew) {
+      <!-- Register new user Card -->
+      <register (isRegisterCardShown)="changeActiveCard($event)"></register>
+
+    }@else{
+      <!-- Sign Ip Card -->
+      <signin (isRegisterCardShown)="changeActiveCard($event)"></signin>
+    }
+
+  </div>
+</div>

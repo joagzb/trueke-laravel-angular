@@ -1,0 +1,31 @@
+<div class="max-w-3xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg mt-10 mb-10">
+  <div class="text-center">
+    <img src="{{author.imageURL}}" alt="User Photo" class="w-32 h-32 rounded-full mx-auto mb-4">
+    <h1 class="text-3xl font-bold">{{author.author}}</h1>
+    <p class="mt-2 text-gray-600 dark:text-gray-300">{{author.bio}}</p>
+  </div>
+
+  <div class="mt-6 text-center">
+    <h2 class="text-2xl font-semibold mb-2">Technologies I Use</h2>
+    <ul class="space-y-1 mx-auto inline-block text-left">
+      @for (item of author.technologies; track $index) {
+        <li>{{item}}</li>
+      }
+    </ul>
+  </div>
+
+  <div class="mt-6 text-center">
+    <h2 class="text-2xl font-semibold mb-2">Connect with Me</h2>
+    <div class="flex justify-center space-x-4">
+      <a href="{{author.social.portfolioURL}}" target="_blank" class="text-light-coral hover:text-light-coral-dark">
+        <i class="fas fa-briefcase w-6 h-6"></i>
+      </a>
+      <a href="{{author.social.linkedinURL}}" target="_blank" class="text-light-coral hover:text-light-coral-dark">
+        <i class="fab fa-linkedin w-6 h-6"></i>
+      </a>
+      <a href="{{author.social.githubURL}}" target="_blank" class="text-light-coral hover:text-light-coral-dark">
+        <i class="fab fa-github w-6 h-6"></i>
+      </a>
+    </div>
+  </div>
+</div>

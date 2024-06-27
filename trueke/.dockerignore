@@ -1,0 +1,35 @@
+# Laravel specific
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/storage/*.log
+/storage/*.pid
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*.log
+
+# Environment files
+.env
+
+# IDE and editor settings
+.idea
+.vscode
+*.swp
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Docker-specific files
+.dockerignore
+Dockerfile
+docker-compose.yml

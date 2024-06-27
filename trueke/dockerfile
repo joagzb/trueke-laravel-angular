@@ -1,0 +1,36 @@
+# Use a base image with PHP 8.3
+FROM php:8.3-cli
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    zip \
+    unzip \
+    git \
+    && docker-php-ext-install pdo pdo_pgsql
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
+    && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
+    && rm composer-setup.php
+
+# Copy the rest of the application code
+COPY . .
+
+# Allow Composer plugins as root
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
+# Install application dependencies
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Generate autoload files and optimize Composer autoloader
+RUN composer dump-autoload --optimize
+
+# Expose port 8000 (default Laravel artisan serve port)
+EXPOSE 8000
+
+# Run PHP artisan serve
+CMD ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "8000"]

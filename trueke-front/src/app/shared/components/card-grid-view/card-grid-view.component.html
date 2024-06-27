@@ -1,0 +1,30 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  @for (item of items; track $index) {
+  <div (click)="itemClick(item.id)" class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer flex flex-col justify-between">
+    <div>
+      <img [src]="item.image" alt="Furniture" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h4 class="text-xl font-bold mb-2 text-center">{{ item.title }}</h4>
+        <p class="mb-2 overflow-hidden text-ellipsis">{{ item.description.slice(0,100) }}...</p>
+      </div>
+    </div>
+    <div class="p-4 pt-0 flex flex-col justify-end flex-grow">
+      <p class="text-sm text-gray-600 italic text-right">{{ item.extraInformation }}</p>
+      <div class="text-sm text-gray-600 flex justify-center mt-4">
+        @for (tag of item.tags; track $index) {
+        <span class="inline-block bg-gray-200 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">
+        {{ tag }}
+        </span>
+        }
+      </div>
+      <div *ngIf="item.notification && mustShowNotification" (click)="notificationCallback(item.id)"
+           class="bg-blue-500 text-white p-4 rounded-lg shadow-lg mt-4 flex justify-between items-center transition-transform transform hover:scale-105 hover:rotate-1">
+        <div class="flex items-center">
+          <i class="fas fa-info-circle mr-2"></i>
+          <span>{{ item.notification.message }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

@@ -1,0 +1,20 @@
+<div class="text-center mt-6">
+  <img [src]="user.image" alt="profile card" class="rounded-full w-32 h-32 md:w-40 md:h-40 mx-auto">
+  <div class="text-gray-800 font-bold text-xl md:text-2xl mb-6">{{ user.name }} {{ user.surname }}</div>
+  <div class="flex justify-center flex-wrap text-gray-600 mb-6">
+    <div class="flex flex-col items-center justify-center px-6 py-4">
+      <div class="text-xl md:text-2xl">{{ userDetails.postsCount }}</div>
+      <div class="text-sm md:text-base">active posts</div>
+    </div>
+    <div class="flex flex-col items-center justify-center px-6 py-4">
+      <div class="text-xl md:text-2xl">{{ userDetails.truekesCount }}</div>
+      <div class="text-sm md:text-base">truekes done</div>
+    </div>
+  </div>
+  <div class="flex justify-center flex-wrap mb-4">
+    @if (canUpdate) {
+      <button (click)="onUpdateProfileBtnClick()" class="bg-yellow-500 text-white rounded-full px-4 py-2 mx-2 my-1 md:mx-4 md:my-2">Edit Profile</button>
+    }
+    <button (click)="viewUserListings()" class="bg-yellow-500 text-white rounded-full px-4 py-2 mx-2 my-1 md:mx-4 md:my-2">View listings</button>
+  </div>
+</div>

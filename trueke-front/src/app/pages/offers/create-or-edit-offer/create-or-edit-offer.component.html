@@ -1,0 +1,52 @@
+<!-- Overlay -->
+<div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center z-50">
+  <!-- Modal Container -->
+  <div class="w-full max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-6 relative">
+    <h2 class="text-2xl font-bold mb-4">{{ offer ? 'Edit Offer' : 'New Offer' }}</h2>
+    <form [formGroup]="offerForm" (ngSubmit)="onSubmit()">
+      <!-- Message Field -->
+      <div class="mb-4">
+        <label for="message" class="block text-sm font-bold mb-2">*Message:</label>
+        <textarea id="message" formControlName="message" class="w-full border rounded p-2" required></textarea>
+        <input-error-msg [control]="offerForm.controls['message']" controlName="message"></input-error-msg>
+      </div>
+
+      <!-- Pieces Offered Field -->
+      <div class="mb-4">
+        <label for="pieces" class="block text-sm font-bold mb-2">*Pieces offered:</label>
+        <div class="flex flex-wrap mb-2">
+          @for (piece of selectedPieces; track $index) {
+          <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded flex items-center">
+          {{ piece.title }}
+          <button type="button" (click)="removePiece(piece)" class="ml-1 text-gray-600 hover:text-gray-900">
+                <i class="fas fa-times"></i>
+              </button>
+          </span>
+          }
+        </div>
+        <select (change)="addPiece($event)" class="w-full border rounded p-2">
+          <option disabled selected>Select a piece...</option>
+          @for (piece of availablePieces; track $index) {
+          <option [value]="piece.id">{{ piece.title }}</option>
+          }
+        </select>
+        @if (selectedPieces.length === 0) {
+        <p class="text-sm text-light-dark-slate-grey mt-2">
+          You must select at least one piece.
+        </p>
+        }
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex justify-end">
+        <button type="button" (click)="onCancel()" class="bg-gray-500 text-white py-2 px-4 rounded mr-2">Cancel</button>
+        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded" [disabled]="offerForm.invalid">{{ offer ? 'Update' : 'Create' }}</button>
+      </div>
+    </form>
+
+    <!-- Close Button -->
+    <button type="button" (click)="onCancel()" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900">
+      <i class="fas fa-times text-2xl"></i>
+    </button>
+  </div>
+</div>

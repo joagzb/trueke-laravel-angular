@@ -1,0 +1,21 @@
+<div class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50" (click)="onClose()">
+  <div class="relative bg-white w-11/12 md:w-4/5 lg:w-3/4 xl:w-2/3 2xl:w-1/2 rounded-lg shadow-lg overflow-hidden" (click)="$event.stopPropagation()">
+    <div class="flex justify-between items-center p-4 border-b border-gray-300">
+      <h2 class="text-xl font-bold text-center">{{ piece?.title }}</h2>
+      <!-- Buttons Container -->
+      <div class="flex items-center space-x-4">
+        <button (click)="onEdit()" class="bg-light-golden-yellow text-light-dark-slate-grey py-2 px-4 rounded">Edit</button>
+        <button (click)="onDelete()" class="bg-light-coral text-soft-grey py-2 px-4 rounded">Delete</button>
+      </div>
+    </div>
+    <!-- Modal Body -->
+    <div class="p-6">
+      <img [src]="piece?.imageURL" alt="{{ piece?.title }}" class="w-full h-48 object-cover mb-4">
+      <p><strong>Description:</strong> {{ piece?.description }}</p>
+      <p><strong>Material:</strong> {{ piece?.material || 'N/A' }}</p>
+      <p><strong>Brand:</strong> {{ piece?.brand || 'N/A' }}</p>
+      <p><strong>Price:</strong> {{ piece?.price || 'N/A' }}</p>
+      <p><strong>Designated room:</strong> {{ piece?.room || 'N/A' }}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="wrapper bg-gray-100 min-h-screen py-10 px-5 md:px-0">
+  <div class="profile-card bg-white shadow-lg rounded-xl max-w-lg mx-auto relative p-6">
+    <div class="profile-card__img relative">
+        @if (isEditCardShown) {
+          <edit-profile-card [user]="user!" (showEditProfileTrigger)="showEditCard(false)"></edit-profile-card>
+        }@else{
+          <show-profile-card [user]="user!" [canUpdate]="canUpdate" (showEditProfileTrigger)="showEditCard(true)"></show-profile-card>
+        }
+    </div>
+  </div>
+</div>

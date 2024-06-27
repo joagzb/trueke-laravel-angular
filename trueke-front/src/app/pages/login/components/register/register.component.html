@@ -1,0 +1,74 @@
+<div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 mb-6">
+  <h2 class="text-2xl font-bold mb-4">New Account</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-4">
+
+
+    <div>
+      <input type="text" placeholder="Name" id="name" formControlName="name" required
+             class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-light-teal dark:focus:border-light-teal">
+      @if(registerForm.get('name')?.touched && registerForm.get('name')?.hasError){
+      <div class="text-sm text-red-500">
+        Name is required
+      </div>
+      }
+    </div>
+
+    <div>
+      <input type="text" placeholder="Lastname" id="surname" formControlName="surname" required
+             class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-light-teal dark:focus:border-light-teal">
+      @if(registerForm.get('lastname')?.touched){
+      <div class="text-sm text-red-500">
+        Last name is required
+      </div>
+      }
+
+    </div>
+
+    <div>
+      <input type="text" placeholder="Country" id="country" formControlName="country" required
+             class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-light-teal dark:focus:border-light-teal">
+      @if(registerForm.get('country')?.touched){
+      <div class="text-sm text-red-500">
+        Country is required
+      </div>
+      }
+    </div>
+
+    <div>
+      <input type="email" placeholder="Email" id="email" formControlName="email" required
+             class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-light-teal dark:focus:border-light-teal">
+      @if(registerForm.get('email')?.touched){
+      <div class="text-sm text-red-500">
+        Valid email is required
+      </div>
+      }
+    </div>
+
+    <div>
+      <input type="password" placeholder="Password" id="password" formControlName="password" required
+             class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-light-teal dark:focus:border-light-teal">
+      @if(registerForm.get('password')?.touched){
+      <div class="text-sm text-red-500">
+        Password is required
+      </div>
+      }
+    </div>
+
+    <div>
+      <input type="password" placeholder="Validate Password" id="password_confirmation" formControlName="password_confirmation" required
+             class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-light-teal dark:focus:border-light-teal">
+      @if(registerForm.get('validate_password')?.touched){
+      <div class="text-sm text-red-500">
+        Validation password is required
+      </div>
+      }
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid"
+            class="w-full bg-light-coral text-white py-2 rounded hover:bg-light-coral-dark focus:outline-none focus:ring-2 focus:ring-light-coral focus:ring-opacity-50">
+      Register
+    </button>
+  </form>
+  <div class="flex flex-col items-center mt-4">
+    <p class="text-center">Already registered? <a (click)="showSigninCardEvent()" class="cursor-pointer text-light-coral hover:text-light-coral-dark">Sign In</a></p>
+  </div></div>

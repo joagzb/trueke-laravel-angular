@@ -1,0 +1,47 @@
+<div class="container mx-auto py-10 px-4 md:flex md:space-x-4">
+  <!-- Filters Column -->
+  <div class="w-full md:w-1/4 mb-6 md:mb-0">
+    <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="sort-by" class="block text-sm font-bold mb-2">Sort by:</label>
+        <select id="sort-by" formControlName="sortBy" class="w-full border rounded p-2">
+          <option value="date">Date published</option>
+          <option value="title">Title</option>
+          <option value="popularity">User exchanges</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-2">Filter by:</label>
+        <div class="bg-white p-4 shadow-md rounded mb-4">
+          <div class="mb-4">
+            <label for="location-filter" class="block text-sm mb-1">Location:</label>
+            <select name="location-filter" id="location-filter" formControlName="location" class="w-full border rounded p-2">
+              <option value="">All Locations</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Brazil">Brazil</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label for="date-filter" class="block text-sm mb-1">Date:</label>
+            <input type="date" id="date-filter" formControlName="date" class="w-full border rounded p-2">
+          </div>
+          <div class="mb-4">
+            <label for="room-filter" class="block text-sm mb-1">Room:</label>
+            <select name="room-filter" id="room-filter" formControlName="room" class="w-full border rounded p-2">
+              <option value="">All Rooms</option>
+              <option value="kitchen">Kitchen</option>
+              <option value="living_room">Living Room</option>
+              <option value="bedroom">Bedroom</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded">Apply Filters</button>
+    </form>
+  </div>
+
+  <!-- Furniture Grid -->
+  <div class="w-full md:w-3/4 flex justify-center">
+    <card-grid-view [items]="(posts$ | async) ?? []" (onItemClick)="onPostClick($event)"></card-grid-view>
+  </div>
+</div>

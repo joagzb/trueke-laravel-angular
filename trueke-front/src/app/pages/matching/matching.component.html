@@ -1,0 +1,12 @@
+<div class="container mx-auto py-10 flex items-center justify-center">
+  @if (unseenOffers.length>0) {
+  <liking-rejecting-offer-cards [offers]="unseenOffers" (onFinishLiking)="moveToSelectingStage($event)"></liking-rejecting-offer-cards>
+  }@else if (likedOffers.length>0) {
+  <liked-offers-modal [likedOffers]="likedOffers" (onFinishMatching)="onOfferSelected()"></liked-offers-modal>
+  }@else {
+  <div class="text-center p-6">
+    <h3 class="text-2xl font-semibold mb-4">No more offers available</h3>
+    <p class="text-gray-700">Please check back later for more offers.</p>
+  </div>
+  }
+</div>

@@ -1,0 +1,45 @@
+<div class="container mx-auto py-10">
+  <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6">
+    <h2 class="text-2xl font-bold mb-4">{{ post ? 'Edit Listing' : 'Create New Listing' }}</h2>
+    <form [formGroup]="listingForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="title" class="block text-sm font-bold text-light-dark-slate-grey mb-2">*Title:</label>
+        <input formControlName="title" class="w-full border rounded p-2 bg-white text-dark-slate-grey" required />
+        <input-error-msg [control]="formControls['title']" controlName="title"></input-error-msg>
+      </div>
+      <div class="mb-4">
+        <label for="description" class="block text-sm font-bold text-light-dark-slate-grey mb-2">Description:</label>
+        <textarea formControlName="description" class="w-full border rounded p-2 bg-white text-dark-slate-grey" required></textarea>
+        <input-error-msg [control]="formControls['description']" controlName="description"></input-error-msg>
+      </div>
+      <div class="mb-4">
+        <label for="pieces" class="block text-sm font-bold mb-2">*Pieces:</label>
+        <div class="flex flex-wrap mb-2">
+          @for (piece of selectedPieces; track $index) {
+            <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded flex items-center">
+              {{ piece.title }}
+              <button type="button" (click)="removePiece(piece)" class="ml-1 text-gray-600 hover:text-gray-900">
+                <i class="fas fa-times"></i>
+              </button>
+            </span>
+          }
+        </div>
+        <select (change)="addPiece($event)" class="w-full border rounded p-2">
+          <option disabled selected>Select a piece...</option>
+          @for (piece of availablePieces; track $index) {
+            <option [value]="piece.id">{{ piece.title }}</option>
+          }
+        </select>
+        @if (selectedPieces.length === 0) {
+          <p class="text-sm text-light-dark-slate-grey mt-2">
+            You must select at least one piece.
+          </p>
+        }
+      </div>
+      <div class="flex justify-end">
+        <button type="button" (click)="onCancel()" class="bg-gray-500 text-white py-2 px-4 rounded mr-2">Cancel</button>
+        <button type="submit" class="bg-light-golden-yellow text-light-dark-slate-grey py-2 px-4 rounded">{{ post ? 'Update' : 'Create' }}</button>
+      </div>
+    </form>
+  </div>
+</div>
