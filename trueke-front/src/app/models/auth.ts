@@ -6,7 +6,7 @@ export type NewUserPostRequest = Pick<IUser,'name' | 'surname' | 'country' | 'em
 
 export type SigninPostRequest = Pick<IUser,'email' | 'password'>;
 
-export type SigninResponse = {
+export interface SigninResponse {
   user: Omit<IUser, 'password'>;
   token: string;
-};
+}

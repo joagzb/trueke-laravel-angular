@@ -2,7 +2,7 @@ import {IPiece} from "./piece.js";
 import {IPost} from "./post.js";
 import {getUserResponse} from "./user.js";
 
-export type IOffer = {
+export interface IOffer {
   id: string;
   user: getUserResponse;
   post: IPost;
@@ -12,7 +12,7 @@ export type IOffer = {
   isLiked?: boolean;
   created_at?: Date;
   updated_at?: Date;
-};
+}
 
 export type newOfferRequest = Omit<IOffer, 'created_at' | 'updated_at' | 'pieces' | 'user' | 'post' | 'id'> & {
   pieces: string[];

@@ -1,16 +1,16 @@
-<div class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50" (click)="onClose()">
-  <div class="relative bg-white w-11/12 md:w-4/5 lg:w-3/4 xl:w-2/3 2xl:w-1/2 rounded-lg shadow-lg overflow-hidden" (click)="$event.stopPropagation()">
-    <div class="flex justify-between items-center p-4 border-b border-gray-300">
+<div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50" (click)="onClose()">
+  <div class="relative w-11/12 bg-white rounded-lg shadow-lg overflow-hidden md:w-4/5 lg:w-3/4 xl:w-2/3 2xl:w-1/2" (click)="$event.stopPropagation()">
+    <div class="flex items-center justify-between p-4 border-b border-gray-300">
       <h2 class="text-xl font-bold text-center">{{ piece?.title }}</h2>
       <!-- Buttons Container -->
       <div class="flex items-center space-x-4">
-        <button (click)="onEdit()" class="bg-light-golden-yellow text-light-dark-slate-grey py-2 px-4 rounded">Edit</button>
-        <button (click)="onDelete()" class="bg-light-coral text-soft-grey py-2 px-4 rounded">Delete</button>
+        <button (click)="onEdit()" class="px-4 py-2 text-light-dark-slate-grey bg-light-golden-yellow rounded">Edit</button>
+        <button (click)="onDelete()" class="px-4 py-2 text-soft-grey bg-light-coral rounded">Delete</button>
       </div>
     </div>
     <!-- Modal Body -->
     <div class="p-6">
-      <img [src]="piece?.imageURL" alt="{{ piece?.title }}" class="w-full h-48 object-cover mb-4">
+      <img [src]="piece?.imageURL" alt="{{ piece?.title }}" class="w-full h-48 mb-4 object-cover">
       <p><strong>Description:</strong> {{ piece?.description }}</p>
       <p><strong>Material:</strong> {{ piece?.material || 'N/A' }}</p>
       <p><strong>Brand:</strong> {{ piece?.brand || 'N/A' }}</p>

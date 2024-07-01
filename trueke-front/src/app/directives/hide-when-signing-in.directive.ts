@@ -2,13 +2,13 @@ import { Directive, OnInit, OnDestroy, TemplateRef, ViewContainerRef } from '@an
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import {routesSchema} from '../config/routes.schema.js';
-import {Observable, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 @Directive({
   selector: '[HideWhenSigningIn]',
   standalone: true
 })
 export class HideWhenSigningInDirective implements OnInit, OnDestroy {
-  private hideElement: boolean = false;
+  private hideElement = false;
   private navigationSubscription?: Subscription;
 
   constructor(

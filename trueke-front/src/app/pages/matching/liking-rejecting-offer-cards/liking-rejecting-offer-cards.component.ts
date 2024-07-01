@@ -18,7 +18,7 @@ export class LikingRejectingOfferCardsComponent implements OnInit, AfterViewInit
   availableOffers: IOffer[] = [];
   viewedOffers: IOffer[] = [];
   imageCarousel: Swiper | undefined;
-  currentOfferIndex: number = 0;
+  currentOfferIndex = 0;
 
   constructor(private offerService: OfferService){}
 

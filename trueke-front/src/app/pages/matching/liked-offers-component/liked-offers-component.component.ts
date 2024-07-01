@@ -17,7 +17,7 @@ export class LikedOffersComponentComponent {
   @Input() likedOffers: IOffer[] = [];
   @Output() onFinishMatching = new EventEmitter<void>();
   selectedOffer: IOffer | null = null;
-  isDetailsModalShown: boolean = false;
+  isDetailsModalShown = false;
 
   constructor (private offerService: OfferService) {}
 

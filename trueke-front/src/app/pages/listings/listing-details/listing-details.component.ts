@@ -1,30 +1,28 @@
-import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import Swiper from 'swiper';
-import {Navigation, Pagination} from 'swiper/modules';
+import { register } from 'swiper/element/bundle';
 import {PostService} from '../../../services/post.service.js';
 import {IPost} from '../../../models/post.js';
 import {routesSchema} from '../../../config/routes.schema.js';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {ShowIfSignedInDirective} from '../../../directives/show-if-signed-in.directive.js';
 import {AuthService} from '../../../services/auth.service.js';
-import {getUserResponse} from '../../../models/user.js';
 import {CreateOrEditOfferComponent} from '../../offers/create-or-edit-offer/create-or-edit-offer.component.js';
-import {IOffer} from '../../../models/offer.js';
+register(); // swiper
 
 @Component({
   selector: 'listing-details',
   standalone: true,
   imports: [CommonModule, NgOptimizedImage, ShowIfSignedInDirective, CreateOrEditOfferComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './listing-details.component.html',
   styleUrl: './listing-details.component.scss'
 })
-export class ListingDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ListingDetailsComponent implements OnInit {
   post: IPost | undefined;
-  imageCarousel: Swiper | null = null;
-  isOfferModalShown: boolean = false;
-  offerAlreadyMade: boolean = false;
-  isOwnPost: boolean = false;
+  isOfferModalShown = false;
+  offerAlreadyMade = false;
+  isOwnPost = false;
 
   constructor (
     private activatedRoute: ActivatedRoute,
@@ -39,27 +37,6 @@ export class ListingDetailsComponent implements OnInit, AfterViewInit, OnDestroy
       this._loadPost(postID);
     } else {
       this.router.navigate([routesSchema.notFound]);
-    }
-  }
-
-  ngAfterViewInit() {
-    this.imageCarousel = new Swiper('.swiper-container', {
-      modules: [Navigation, Pagination],
-      slidesPerView: 1,
-      navigation: true,
-      pagination: {
-        clickable: true,
-        type: 'bullets',
-      },
-      spaceBetween: 30,
-      loop: true,
-      autoplay: true,
-    });
-  }
-
-  ngOnDestroy() {
-    if (this.imageCarousel) {
-      this.imageCarousel.destroy();
     }
   }
 

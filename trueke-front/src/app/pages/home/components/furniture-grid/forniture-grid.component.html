@@ -1,0 +1,11 @@
+<div class="container mx-auto py-10 px-2 md:flex md:space-x-4">
+  <!-- Filters Column (Hidden on Small Screens) -->
+  <div class="w-full md:w-1/4 mb-6 md:mb-0 hidden sm:block">
+    <listing-filter (filterFormChange)="onSubmit($event)"></listing-filter>
+  </div>
+
+  <!-- Furniture Grid (Full Width on Small Screens) -->
+  <div class="w-full md:w-3/4 flex justify-center">
+    <card-grid-view [items]="(posts$ | async) ?? []" (onItemClick)="onPostClick($event)"></card-grid-view>
+  </div>
+</div>

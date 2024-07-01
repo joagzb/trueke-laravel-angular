@@ -1,10 +1,6 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Injectable, Type } from '@angular/core';
-import {NewUserPostRequest, SigninPostRequest} from '../models/auth.js';
-import {patchUserRequest} from '../models/user.js';
-import {NewPostRequest, patchPostRequest} from '../models/post.js';
 import {IPiece, NewPieceRequest, patchPieceRequest} from '../models/piece.js';
 import {environment} from '../../environments/environment.js';
 

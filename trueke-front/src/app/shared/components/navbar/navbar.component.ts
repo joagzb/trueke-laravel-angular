@@ -1,9 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import {AuthService} from '../../../services/auth.service.js';
 import {CommonModule} from '@angular/common';
-import {routesSchema} from '../../../config/routes.schema.js';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 import {NavigationService} from '../../../services/navigation.service.js';
 
 @Component({

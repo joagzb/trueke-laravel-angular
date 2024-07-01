@@ -1,11 +1,11 @@
-import {Directive, ElementRef, Input, OnChanges, OnInit, Renderer2, TemplateRef, ViewContainerRef} from '@angular/core';
+import {Directive, Input, OnChanges, OnInit, Renderer2, TemplateRef, ViewContainerRef} from '@angular/core';
 
 @Directive({
   selector: '[ShowLoadingSpinner]',
   standalone: true
 })
 export class ShowLoadingSpinnerDirective implements OnInit, OnChanges {
-  @Input() ShowLoadingSpinner: boolean = false;
+  @Input() ShowLoadingSpinner = false;
 
   constructor (
     private templateRef: TemplateRef<any>,

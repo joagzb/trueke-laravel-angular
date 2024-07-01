@@ -1,15 +1,13 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
 import {InputErrorMsgComponent} from '../../../shared/components/input-error-msg/input-error-msg.component.js';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {PieceService} from '../../../services/piece.service.js';
 import {OfferService} from '../../../services/offer.service.js';
-import {ActivatedRoute, Router} from '@angular/router';
-import {PostService} from '../../../services/post.service.js';
+import { Router} from '@angular/router';
 import {AuthService} from '../../../services/auth.service.js';
 import {IPiece} from '../../../models/piece.js';
 import {IOffer, newOfferRequest} from '../../../models/offer.js';
 import {IPost} from '../../../models/post.js';
-import {routesSchema} from '../../../config/routes.schema.js';
 import {Location} from '@angular/common';
 
 @Component({
@@ -19,7 +17,7 @@ import {Location} from '@angular/common';
   templateUrl: './create-or-edit-offer.component.html',
   styleUrl: './create-or-edit-offer.component.scss'
 })
-export class CreateOrEditOfferComponent {
+export class CreateOrEditOfferComponent implements OnInit {
   @Input() offer: IOffer | undefined;
   @Input() post: IPost | undefined;
   @Output() onModalClose = new EventEmitter<void>();

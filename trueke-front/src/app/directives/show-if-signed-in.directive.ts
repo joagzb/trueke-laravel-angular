@@ -1,4 +1,4 @@
-import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import {AuthService} from '../services/auth.service.js';
 import {Subscription} from 'rxjs';
 
@@ -7,7 +7,7 @@ import {Subscription} from 'rxjs';
   standalone: true
 })
 export class ShowIfSignedInDirective implements OnInit, OnDestroy {
-  private isVisible: boolean = false;
+  private isVisible = false;
   private authSubscription?: Subscription;
 
   constructor(

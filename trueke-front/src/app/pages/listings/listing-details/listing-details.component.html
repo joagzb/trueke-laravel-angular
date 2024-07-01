@@ -1,16 +1,15 @@
 <div class="container mx-auto py-10">
-  <div class="bg-white shadow-lg rounded-lg overflow-hidden p-6">
+  <div class="bg-white shadow-lg rounded-lg p-6">
     <div class="flex flex-col md:flex-row">
 
       <!-- Carousel of pieces and its details -->
-      <div class="w-full md:w-1/2">
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
+      <div class="w-full md:w-1/2 mb-6 md:mb-0 relative">
+        <swiper-container slides-per-view="1" speed="500" loop="true" css-mode="true" navigation="true" >
+          @for (piece of post?.pieces; track $index) {
             <div class="swiper-slide">
-              @for (piece of post?.pieces; track $index) {
-              <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                <img [ngSrc]="piece.imageURL" width="32" height="32" alt="{{ piece?.title }}" class="w-full h-48 object-cover">
-                <div class="p-4">
+              <div class="bg-white shadow-md rounded-lg">
+                <img [src]="piece.imageURL" width="100%" height="auto" alt="{{ piece?.title }}" class="w-full h-48 object-cover">
+                <div class="py-4 px-10">
                   <h3 class="text-xl font-bold mb-2">{{ piece.title }}</h3>
                   <p class="mb-2">{{ piece.description }}</p>
                   <div class="flex flex-wrap mb-4">
@@ -19,20 +18,16 @@
                   <ng-container *ngIf="piece.material || piece.brand || piece.price">
                     <p class="font-bold">Details:</p>
                     <ul class="list-disc list-inside">
-                      <li class="text-sm text-gray-600">{{piece.material ? "Material:" + piece.material : ""}}</li>
-                      <li class="text-sm text-gray-600">{{piece.brand ? "Brand:" + piece.brand : ""}}</li>
-                      <li *ShowIfSignedIn class="text-sm text-gray-600"> {{piece.price ? "Estimated price:" + piece.price : ""}}</li>
+                      <li class="text-sm text-gray-600" *ngIf="piece.material">Material: {{ piece.material }}</li>
+                      <li class="text-sm text-gray-600" *ngIf="piece.brand">Brand: {{ piece.brand }}</li>
+                      <li class="text-sm text-gray-600" *ngIf="piece.price">Estimated price: {{ piece.price }}</li>
                     </ul>
                   </ng-container>
                 </div>
               </div>
-              }
             </div>
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-        </div>
+          }
+        </swiper-container>
       </div>
 
       <!-- Post Details -->
@@ -42,15 +37,15 @@
         <p *ShowIfSignedIn class="text-sm text-gray-600 text-right mb-2">Posted by: {{ post?.user?.name }} {{ post?.user?.surname }}</p>
         <p *ShowIfSignedIn class="text-sm text-gray-600 text-right mb-2">{{ post?.updated_at | date:'dd/MM/yyyy' }}</p>
         <p class="text-sm text-gray-600 text-right mb-4">{{ post?.user?.country }} {{ post?.user?.city }}</p>
-        @if (!offerAlreadyMade && !isOwnPost) {
-        <button *ShowIfSignedIn (click)="onOfferClick(post!.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Make an Offer</button>
-        }
+        @if (!offerAlreadyMade && !isOwnPost){
+          <button *ShowIfSignedIn (click)="onOfferClick(post!.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Make an Offer</button>
+      }
       </div>
     </div>
   </div>
 
-   <!-- create or edit offer modal -->
-   @if (isOfferModalShown) {
-    <create-or-edit-offer-modal [post]="post" (onModalClose)="onCloseModal()"></create-or-edit-offer-modal>
-    }
+  <!-- create or edit offer modal -->
+  @if (isOfferModalShown) {
+  <create-or-edit-offer-modal [post]="post" (onModalClose)="onCloseModal()"></create-or-edit-offer-modal>
+  }
 </div>

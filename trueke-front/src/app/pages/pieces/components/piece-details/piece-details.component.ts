@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {IPiece} from '../../../../models/piece.js';
-import Swiper from 'swiper';
 
 @Component({
   selector: 'piece-details',

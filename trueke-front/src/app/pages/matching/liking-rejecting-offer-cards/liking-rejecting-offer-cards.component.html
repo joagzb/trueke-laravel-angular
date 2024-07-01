@@ -4,10 +4,10 @@
       <div *ngFor="let offer of availableOffers" class="swiper-slide offer-card bg-white shadow-md rounded-lg p-6 m-4 w-80 transition-transform duration-300 transform hover:scale-105">
         <div class="card-content flex flex-col items-center">
           <h3 class="text-lg font-semibold mb-4">{{ offer.pieces[0].title }}</h3>
-          <img [src]="offer.pieces[0].imageURL || 'default-image.jpg'" alt="{{ offer.pieces[0].title }}" class="max-w-full h-40 object-cover mb-4 rounded-lg">
+          <img [src]="offer.pieces[0].imageURL || 'default-image.jpg'" alt="{{ offer.pieces[0].title }}" class="w-full h-40 object-cover mb-4 rounded-lg">
           <p class="text-center text-gray-700 mb-4">{{ offer.message }}</p>
         </div>
-        <div class="card-actions flex justify-between w-full">
+        <div class="card-actions flex justify-between">
           <button (click)="onSwipeLeft()" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Dislike</button>
           <button (click)="onSwipeRight()" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Like</button>
         </div>

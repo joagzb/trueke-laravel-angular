@@ -39,7 +39,7 @@ export class SigninComponent {
     };
 
     this.authService.signin(payload).subscribe(
-      (result: getUserResponse) => {
+      _ => {
         this.router.navigate([routesSchema.home],{replaceUrl:true,skipLocationChange:true});
       }
     );

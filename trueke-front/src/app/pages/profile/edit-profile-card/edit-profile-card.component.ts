@@ -3,8 +3,6 @@ import {UserService} from '../../../services/user.service.js';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {InputErrorMsgComponent} from '../../../shared/components/input-error-msg/input-error-msg.component.js';
 import {getUserResponse, patchUserRequest} from '../../../models/user.js';
-import {Router} from '@angular/router';
-import {routesSchema} from '../../../config/routes.schema.js';
 import {AuthService} from '../../../services/auth.service.js';
 
 @Component({

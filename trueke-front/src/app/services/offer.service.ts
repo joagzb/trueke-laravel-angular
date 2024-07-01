@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {IOffer, newOfferRequest, patchOfferRequest} from '../models/offer.js';
 import {Observable} from 'rxjs';

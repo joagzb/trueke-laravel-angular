@@ -1,79 +1,79 @@
-<div class="bg-white min-h-screen py-10 px-5 md:px-0">
-  <div class="bg-white rounded-xl max-w-lg mx-auto">
-    <div class="profile-card__img relative text-center mb-8 flex items-center justify-center">
-      <img src="{{ user.image }}" alt="profile card" class="rounded-full w-32 h-32 md:w-40 md:h-40 mx-auto z-10">
-      <div class="profile-pic-hover absolute w-32 h-32 md:w-40 md:h-40 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity duration-300 hover:opacity-100 rounded-full">
-        <i class="fas fa-pencil-alt text-white text-2xl"></i>
+<div class="min-h-screen px-5 py-10 bg-white md:px-0">
+  <div class="max-w-lg mx-auto bg-white rounded-xl">
+    <div class="relative flex items-center justify-center mb-8 text-center profile-card__img">
+      <img src="{{ user.image }}" alt="profile card" class="w-32 h-32 mx-auto rounded-full z-10 md:w-40 md:h-40">
+      <div class="absolute flex items-center justify-center w-32 h-32 transition-opacity duration-300 bg-black bg-opacity-50 rounded-full opacity-0 profile-pic-hover hover:opacity-100 md:w-40 md:h-40">
+        <i class="text-2xl text-white fas fa-pencil-alt"></i>
       </div>
     </div>
 
-    <form [formGroup]="updateForm" (ngSubmit)="onUpdateProfile()" class="profile-edit-form bg-white mt-8 p-6">
-      <div class="profile-edit-form__container mb-4">
+    <form [formGroup]="updateForm" (ngSubmit)="onUpdateProfile()" class="p-6 mt-8 bg-white profile-edit-form">
+      <div class="mb-4 profile-edit-form__container">
         <div class="relative">
           <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-            <i class="fas fa-user text-light-coral"></i>
+            <i class="text-light-coral fas fa-user"></i>
           </span>
-          <input type="text" formControlName="name" class="form-input pl-10 w-full border-gray-500 border rounded-lg py-2" placeholder="Name">
+          <input type="text" formControlName="name" class="w-full pl-10 py-2 border border-gray-500 rounded-lg form-input" placeholder="Name">
         </div>
         <input-error-msg [control]="formControls['name']" controlName="Name"></input-error-msg>
       </div>
-      <div class="profile-edit-form__container mb-4">
+      <div class="mb-4 profile-edit-form__container">
         <div class="relative">
           <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-            <i class="fas fa-user text-light-coral"></i>
+            <i class="text-light-coral fas fa-user"></i>
           </span>
-          <input type="text" formControlName="lastname" class="form-input pl-10 w-full border-gray-500 border rounded-lg py-2" placeholder="Last name">
+          <input type="text" formControlName="lastname" class="w-full pl-10 py-2 border border-gray-500 rounded-lg form-input" placeholder="Last name">
         </div>
         <input-error-msg [control]="formControls['lastname']" controlName="lastname"></input-error-msg>
       </div>
-      <div class="profile-edit-form__container mb-4">
+      <div class="mb-4 profile-edit-form__container">
         <div class="relative">
           <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-            <i class="fas fa-envelope text-light-coral"></i>
+            <i class="text-light-coral fas fa-envelope"></i>
           </span>
-          <input type="email" formControlName="email" class="form-input pl-10 w-full border-gray-500 border rounded-lg py-2" placeholder="Email">
+          <input type="email" formControlName="email" class="w-full pl-10 py-2 border border-gray-500 rounded-lg form-input" placeholder="Email">
         </div>
         <input-error-msg [control]="formControls['email']" controlName="email"></input-error-msg>
       </div>
-      <div class="profile-edit-form__container mb-4">
+      <div class="mb-4 profile-edit-form__container">
         <div class="relative">
           <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-            <i class="fas fa-globe text-light-coral"></i>
+            <i class="text-light-coral fas fa-globe"></i>
           </span>
-          <input type="text" formControlName="country" class="form-input pl-10 w-full border-gray-500 border rounded-lg py-2" placeholder="Country">
+          <input type="text" formControlName="country" class="w-full pl-10 py-2 border border-gray-500 rounded-lg form-input" placeholder="Country">
         </div>
         <input-error-msg [control]="formControls['country']" controlName="country"></input-error-msg>
       </div>
-      <div class="profile-edit-form__container mb-4">
+      <div class="mb-4 profile-edit-form__container">
         <div class="relative">
           <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-            <i class="fas fa-map-marker-alt text-light-coral"></i>
+            <i class="text-light-coral fas fa-map-marker-alt"></i>
           </span>
-          <input type="text" formControlName="state" class="form-input pl-10 w-full border-gray-500 border rounded-lg py-2" placeholder="State">
+          <input type="text" formControlName="state" class="w-full pl-10 py-2 border border-gray-500 rounded-lg form-input" placeholder="State">
         </div>
         <input-error-msg [control]="formControls['state']" controlName="state"></input-error-msg>
       </div>
-      <div class="profile-edit-form__container mb-4">
+      <div class="mb-4 profile-edit-form__container">
         <div class="relative">
           <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-            <i class="fas fa-city text-light-coral"></i>
+            <i class="text-light-coral fas fa-city"></i>
           </span>
-          <input type="text" formControlName="city" class="form-input pl-10 w-full border-gray-500 border rounded-lg py-2" placeholder="City">
+          <input type="text" formControlName="city" class="w-full pl-10 py-2 border border-gray-500 rounded-lg form-input" placeholder="City">
         </div>
         <input-error-msg [control]="formControls['city']" controlName="city"></input-error-msg>
       </div>
-      <div class="profile-edit-form__container mb-6">
+      <div class="mb-6 profile-edit-form__container">
         <div class="relative">
           <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-            <i class="fas fa-phone text-light-coral"></i>
+            <i class="text-light-coral fas fa-phone"></i>
           </span>
-          <input type="text" formControlName="phone" class="form-input pl-10 w-full border-gray-500 border rounded-lg py-2" placeholder="Phone">
+          <input type="text" formControlName="phone" class="w-full pl-10 py-2 border border-gray-500 rounded-lg form-input" placeholder="Phone">
         </div>
         <input-error-msg [control]="formControls['phone']" controlName="phone"></input-error-msg>
       </div>
       <div class="flex justify-center space-x-4">
-        <button type="button" (click)="onCancel()" class="bg-gray-500 text-white rounded-full px-6 py-2">Cancel</button>
-        <button type="submit" class="bg-light-golden-yellow text-white rounded-full px-6 py-2">Save Changes</button>
+        <button type="button" (click)="onCancel()" class="px-6 py-2 text-white bg-gray-500 rounded-full">Cancel</button>
+        <button type="submit" class="px-6 py-2 text-white bg-light-golden-yellow rounded-full">Save Changes</button>
       </div>
     </form>
   </div>

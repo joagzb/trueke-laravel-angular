@@ -1,20 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {IPost} from '../../models/post.js';
 import {IPiece} from '../../models/piece.js';
-import {PostService} from '../../services/post.service.js';
-import {UserService} from '../../services/user.service.js';
-import {ActivatedRoute, Router} from '@angular/router';
-import {routesSchema} from '../../config/routes.schema.js';
+import { Router} from '@angular/router';
 import {OfferService} from '../../services/offer.service.js';
-import {IOffer, newOfferRequest} from '../../models/offer.js';
+import {IOffer } from '../../models/offer.js';
 import {PieceService} from '../../services/piece.service.js';
-import {InputErrorMsgComponent} from '../../shared/components/input-error-msg/input-error-msg.component.js';
 import {CommonModule, Location} from '@angular/common';
 import {AuthService} from '../../services/auth.service.js';
 import {Observable, map} from 'rxjs';
 import {CreateOrEditOfferComponent} from './create-or-edit-offer/create-or-edit-offer.component.js';
-import {OfferDetailComponent} from './offer-detail/offer-detail.component.js';
 
 @Component({
   selector: 'app-offering',
@@ -26,10 +20,10 @@ import {OfferDetailComponent} from './offer-detail/offer-detail.component.js';
 export class OfferingComponent implements OnInit {
   post?: IPost;
   offers$: Observable<IOffer[]> | undefined;
-  isCreateModalShown: boolean = false;
+  isCreateModalShown = false;
   selectedOffer?: IOffer;
 
-  //TODO: ADD HERE A NOTIFICATION BADGE SAYING IF AN USER LIKED THE OFFER
+  // TODO: ADD HERE A NOTIFICATION BADGE SAYING IF AN USER LIKED THE OFFER
 
   constructor (
     private pieceService: PieceService,

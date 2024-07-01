@@ -16,8 +16,8 @@ import { EditProfileCardComponent } from './edit-profile-card/edit-profile-card.
 })
 export class ProfileComponent implements OnInit {
   user: getUserResponse | undefined;
-  canUpdate: boolean = false;
-  isEditCardShown: boolean = false;
+  canUpdate = false;
+  isEditCardShown = false;
 
   constructor(
     private userService: UserService,
@@ -45,7 +45,7 @@ export class ProfileComponent implements OnInit {
   }
 
   private checkProfileBelongsToCurrentUser(id: number): boolean {
-    return this.authService.currentUser.id == id;
+    return this.authService.currentUser.id === id;
   }
 
   showEditCard(flag: boolean): void {

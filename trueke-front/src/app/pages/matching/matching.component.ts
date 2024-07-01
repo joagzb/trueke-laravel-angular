@@ -1,9 +1,7 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {IOffer, patchOfferRequest} from '../../models/offer.js';
-import Swiper from 'swiper';
+import { Component, OnInit, } from '@angular/core';
+import {IOffer} from '../../models/offer.js';
 import {OfferService} from '../../services/offer.service.js';
-import {ActivatedRoute, Router} from '@angular/router';
-import {routesSchema} from '../../config/routes.schema.js';
+import {ActivatedRoute} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {LikedOffersComponentComponent} from './liked-offers-component/liked-offers-component.component.js';
 import {NavigationService} from '../../services/navigation.service.js';

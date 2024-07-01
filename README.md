@@ -10,6 +10,16 @@ Trueke facilitates the exchange of furniture items among individuals, promoting 
 ## Run project
 Follow the instructions on each README file included in `trueke` and `trueke-front` folders.
 
+## Video Samples
+
+![Alt Text](./trueke-front/public/trueke1.gif)
+
+
+![Alt Text](./trueke-front/public/trueke2.gif)
+
+
+![Alt Text](./trueke-front/public/trueke3.gif)
+
 ## Contact
 For inquiries or feedback, feel free to contact me:
 

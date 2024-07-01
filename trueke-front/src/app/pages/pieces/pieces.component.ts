@@ -12,14 +12,20 @@ import {CardGridElement, CardGridViewComponent} from '../../shared/components/ca
 @Component({
   selector: 'pieces',
   standalone: true,
-  imports: [CommonModule, ShowLoadingSpinnerDirective, PieceDetailsComponent, CreatePieceWindowComponent, CardGridViewComponent],
+  imports: [
+CommonModule,
+ShowLoadingSpinnerDirective,
+PieceDetailsComponent,
+CreatePieceWindowComponent,
+CardGridViewComponent
+],
   templateUrl: './pieces.component.html',
   styleUrl: './pieces.component.scss'
 })
 export class PiecesComponent implements OnInit {
   pieces$: Observable<CardGridElement[]> | undefined;
   selectedPiece: IPiece | null = null;
-  creatingModalShown: boolean = false;
+  creatingModalShown = false;
 
   constructor (private pieceService: PieceService, private authService: AuthService) {}
 
@@ -64,7 +70,7 @@ export class PiecesComponent implements OnInit {
   onDeletePiece(){
     if(this.selectedPiece){
       this.pieceService.delete(this.selectedPiece.id).subscribe(()=>{
-        console.log('deleted piece' + this.selectedPiece?.id);
+        console.log(`deleted piece${ this.selectedPiece?.id}`);
 
         this.pieces$ = this.pieces$?.pipe(
           map(pieces => pieces.filter(piece => piece.id !== this.selectedPiece?.id))

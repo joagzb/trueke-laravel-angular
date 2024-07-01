@@ -25,7 +25,9 @@ class PostController extends Controller {
 		}
 
 		if ($request->input('room')) {
-			$posts = $posts->where('pieces.*.country', $request->input('room'));
+			$posts = $posts->whereHas('pieces', function ($query) use ($request) {
+				$query->where('room', $request->input('room'));
+			});
 		}
 
 		if (Auth::check()) {

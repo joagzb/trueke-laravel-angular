@@ -48,23 +48,36 @@ class DatabaseSeeder extends Seeder {
 				$offer->save();
 			});
 
-			if (env('APP_ENV' != 'test')) {
+			if (env('APP_ENV') != 'test') {
 				// DUMMY USERS
-				User::create([
-					'name' => 'Dummy',
-					'surname' => 'User1',
-					'email' => 'user1@test.com',
-					'password' => Hash::make('test1'),
-				])->pieces()->saveMany(Piece::factory()->count(2));
-
-				User::create([
-					'name' => 'Dummy',
-					'surname' => 'User2',
-					'email' => 'user2@test.com',
-					'password' => Hash::make('test2'),
-				])->pieces()->saveMany(Piece::factory()->count(3));
+				$this->insertDummyUsers();
 			}
 		}
 
+	}
+
+	private function insertDummyUsers() {
+		// Create dummy users
+		$dummyUser1 = User::create([
+			'name' => 'Dummy',
+			'surname' => 'User1',
+			'email' => 'user1@test.com',
+			'password' => Hash::make('test1'),
+			'country' => 'Argentina',
+			'state' => 'Corrientes',
+		]);
+
+		$dummyUser2 = User::create([
+			'name' => 'Dummy',
+			'surname' => 'User2',
+			'email' => 'user2@test.com',
+			'password' => Hash::make('test2'),
+			'country' => 'Argentina',
+			'state' => 'Corrientes',
+		]);
+
+		// Assign pieces of furniture to dummy users
+		$dummyUser1Pieces = Piece::factory()->count(7)->create(['user_id' => $dummyUser1->id]);
+		$dummyUser2Pieces = Piece::factory()->count(5)->create(['user_id' => $dummyUser2->id]);
 	}
 }

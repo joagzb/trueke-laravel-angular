@@ -1,16 +1,10 @@
-<div class="bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center h-screen">
-  <div class="text-center bg-white shadow-lg rounded-lg p-8 max-w-lg z-10">
-    <h1 class="text-4xl font-bold mb-4">404 - Page Not Found</h1>
-    <img src="404_image.jpg" alt="404 Image" class="mx-auto mb-8">
-    <p class="text-lg mb-4">Sorry, no furniture here!. Maybe you should try</p>
+<div class="flex items-center justify-center h-screen">
+  <div class="relative z-10 max-w-lg p-8 text-center bg-white rounded-lg shadow-lg">
+    <h1 class="mb-4 text-4xl font-bold">404 - Page Not Found</h1>
+    <div class="rounded-lg overflow-hidden">
+      <img [src]="imageURL" alt="404 Image" class="mx-auto mb-8 max-w-full h-auto">
+    </div>
+    <p class="mb-4 text-lg">Sorry, no furniture here! Maybe you should try</p>
     <a href="/" routerLink="/home" class="text-blue-500 hover:underline">having a look here</a>
-  </div>
-  <!-- Decorative Lines -->
-  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-    <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <polygon fill="#ffffff" points="0,100 100,0 100,100"/>
-    </svg>
-    <div class="absolute top-0 left-0 w-full h-full border-t border-purple-300"></div>
-    <div class="absolute top-0 left-0 w-full h-full border-r border-purple-300"></div>
   </div>
 </div>

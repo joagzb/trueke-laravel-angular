@@ -1,6 +1,6 @@
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {BehaviorSubject, Observable, throwError} from 'rxjs';
-import {catchError, map, tap} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import { map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {NewUserPostRequest, SigninPostRequest, SigninResponse} from '../models/auth.js';
 import {environment} from '../../environments/environment.development.js';

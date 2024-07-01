@@ -19,9 +19,9 @@ export class NavigationService {
     const subUrls = route.split('/');
     const url = subUrls.reduce((previous, current) => {
       if (current.startsWith(':')) {
-        return previous + (args.pop() ?? '') + '/';
+        return `${previous + (args.pop() ?? '') }/`;
       } else {
-        return previous + current + '/';
+        return `${previous + current }/`;
       }
     }, '');
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {SharedNavbarComponent} from './shared/components/navbar/navbar.component.js';
 import {HideWhenSigningInDirective} from './directives/hide-when-signing-in.directive.js';

@@ -1,6 +1,5 @@
 import {CommonModule} from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {Observable} from 'rxjs';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {IPost} from '../../../models/post.js';
 import {IPiece} from '../../../models/piece.js';
 import {IOffer} from '../../../models/offer.js';
@@ -60,7 +59,7 @@ export class CardGridViewComponent {
   @Input() items: CardGridElement[] | undefined;
   @Output() onItemClick = new EventEmitter<string>();
   @Output() onNotificationClick = new EventEmitter<string>();
-  @Input() mustShowNotification: boolean = false;
+  @Input() mustShowNotification = false;
 
   constructor(){}
 

@@ -2,7 +2,7 @@ import {IOffer} from "./offer.js";
 import {IPiece} from "./piece.js";
 import {getUserResponse} from "./user.js";
 
-export type IPost = {
+export interface IPost {
   id: string;
   user: getUserResponse;
   pieces: Omit<IPiece, 'user'>[];
@@ -12,7 +12,7 @@ export type IPost = {
   isActive?: boolean;
   created_at?: Date;
   updated_at?: Date;
-};
+}
 
 export type NewPostRequest = Omit<IPost, 'id' | 'pieces' | 'user'|'offers' | 'created_at' | 'updated_at'> & {
   pieces: string[];

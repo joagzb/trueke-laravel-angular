@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {Router} from '@angular/router';
 import {getUserResponse} from '../../../models/user.js';
 import {routesSchema} from '../../../config/routes.schema.js';
 import {NavigationService} from '../../../services/navigation.service.js';
@@ -13,7 +12,7 @@ import {NavigationService} from '../../../services/navigation.service.js';
 })
 export class ShowProfileCardComponent {
   @Input() user!: getUserResponse;
-  @Input() canUpdate: boolean = false;
+  @Input() canUpdate = false;
   @Output() showEditProfileTrigger = new EventEmitter<void>();
   userDetails = {
     truekesCount: 0,

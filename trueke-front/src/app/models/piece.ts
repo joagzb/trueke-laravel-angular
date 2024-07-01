@@ -12,9 +12,9 @@ export enum Room {
   GARDEN = 'garden',
 }
 
-export type IPiece = {
+export interface IPiece {
   id: string;
-  post_id?: number | null; //where is the piece being published
+  post_id?: number | null; // where is the piece being published
   user: getUserResponse;
   title: string;
   description: string;
@@ -25,7 +25,7 @@ export type IPiece = {
   imageURL: string;
   created_at: Date;
   updated_at?: Date | null;
-};
+}
 
 export type NewPieceRequest = Omit<IPiece, 'id' | 'created_at' | 'updated_at' | 'post_id' | 'user'>;
 export type patchPieceRequest = Omit<Partial<IPiece>, 'id' | 'user' | 'post_id' | 'created_at' | 'updated_at'>;

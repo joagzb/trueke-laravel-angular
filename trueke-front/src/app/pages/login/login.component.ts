@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {RegisterComponent} from './components/register/register.component.js';
 import {SigninComponent} from './components/signin/signin.component.js';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -12,7 +12,7 @@ import {routesSchema} from '../../config/routes.schema.js';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit{
-  registerNew: boolean = false;
+  registerNew = false;
 
   constructor(private router: Router){}
 

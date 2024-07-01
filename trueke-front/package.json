@@ -5,7 +5,6 @@
   "author": {
     "name": "Joaquin Gonzalez Budino",
     "email": "joa_gzb@hotmail.com",
-    "url": "https://joagzb.notion.site/Portfolio-a90cb2e35b3b41baa73489b26ffa1461#495bc383eaec4ae3ac18d81859743719",
     "github": "https://github.com/joagzb",
     "linkedin": "http://linkedin.com/in/joaquin-gonzalez-budino"
   },
@@ -14,7 +13,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint:fix": "ng lint --fix",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -38,7 +39,9 @@
     "@angular/cli": "^18.0.2",
     "@angular/compiler-cli": "^18.0.0",
     "@types/jasmine": "~5.1.0",
+    "angular-eslint": "18.0.1",
     "autoprefixer": "^10.4.19",
+    "eslint": "^9.3.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -47,6 +50,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
-    "typescript": "~5.4.2"
+    "typescript": "~5.4.2",
+    "typescript-eslint": "8.0.0-alpha.20"
   }
 }

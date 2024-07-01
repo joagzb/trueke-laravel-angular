@@ -39,7 +39,17 @@ php artisan db:seed
 php artisan serve
 ```
 
-This will start a development server at http://localhost:8000.
+This will start a development server at http://localhost:8000. If you seed the database under a local or dev environment, there are two test users you can use, each one with some pieces of furniture:
+
+```
+user1@test.com
+pass: test1
+```
+
+```
+user2@test.com
+pass: test2
+```
 
 ### option 2
 Make sure you have Docker installed on your machine.

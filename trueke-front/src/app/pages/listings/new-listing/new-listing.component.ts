@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostService} from '../../../services/post.service.js';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../../services/auth.service.js';
-import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {routesSchema} from '../../../config/routes.schema.js';
 import {UserService} from '../../../services/user.service.js';
 import {IPost, NewPostRequest} from '../../../models/post.js';
@@ -17,7 +17,7 @@ import {InputErrorMsgComponent} from '../../../shared/components/input-error-msg
   templateUrl: './new-listing.component.html',
   styleUrl: './new-listing.component.scss'
 })
-export class NewListingComponent {
+export class NewListingComponent implements OnInit {
   listingForm: FormGroup;
   post?: IPost;
   availablePieces: Omit<IPiece, 'user'>[] = [];
@@ -73,15 +73,15 @@ export class NewListingComponent {
 
   addPiece(event: any): void {
     const pieceId = event.target.value;
-    const piece = this.availablePieces.find(p => p.id === pieceId);
+    const piece = this.availablePieces.find(p => p.id.toString() === pieceId);
     if (piece) {
       this.selectedPieces.push(piece);
-      this.availablePieces = this.availablePieces.filter(p => p.id !== pieceId);
-      event.target.value = ''; // Reset the select element value after selection
+      this.availablePieces = this.availablePieces.filter(p => p.id.toString() !== pieceId);
+      event.target.value = '';
     }
   }
 
-  removePiece(piece: Omit<IPiece, 'user'>): void {
+  removePiece(piece: Omit<IPiece,'user'>): void {
     this.selectedPieces = this.selectedPieces.filter(p => p.id !== piece.id);
     this.availablePieces.push(piece);
   }

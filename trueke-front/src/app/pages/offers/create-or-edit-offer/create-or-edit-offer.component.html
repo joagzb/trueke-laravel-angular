@@ -1,7 +1,7 @@
 <!-- Overlay -->
 <div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center z-50">
   <!-- Modal Container -->
-  <div class="w-full max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-6 relative">
+  <div class="w-11/12 h-4/5 sm:max-w-3xl sm:h-auto mx-auto bg-white shadow-lg rounded-lg p-6 relative">
     <h2 class="text-2xl font-bold mb-4">{{ offer ? 'Edit Offer' : 'New Offer' }}</h2>
     <form [formGroup]="offerForm" (ngSubmit)="onSubmit()">
       <!-- Message Field -->
@@ -17,10 +17,10 @@
         <div class="flex flex-wrap mb-2">
           @for (piece of selectedPieces; track $index) {
           <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded flex items-center">
-          {{ piece.title }}
-          <button type="button" (click)="removePiece(piece)" class="ml-1 text-gray-600 hover:text-gray-900">
-                <i class="fas fa-times"></i>
-              </button>
+            {{ piece.title }}
+            <button type="button" (click)="removePiece(piece)" class="ml-1 text-gray-600 hover:text-gray-900">
+              <i class="fas fa-times"></i>
+            </button>
           </span>
           }
         </div>

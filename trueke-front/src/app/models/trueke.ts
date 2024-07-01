@@ -1,7 +1,7 @@
 import {IOffer} from "./offer.js";
 import {IPost} from "./post.js";
 
-export type ITrueke = {
+export interface ITrueke {
   id: string;
   user_id: number;
   offer: IOffer;

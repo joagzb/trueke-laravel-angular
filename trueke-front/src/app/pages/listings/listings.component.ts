@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from '../../services/user.service.js';
 import {routesSchema} from '../../config/routes.schema.js';
 import {PostService} from '../../services/post.service.js';
 import {Observable, map} from 'rxjs';
 import {CommonModule} from '@angular/common';
-import {IPost} from '../../models/post.js';
 import {CardGridElement, CardGridViewComponent} from '../../shared/components/card-grid-view/card-grid-view.component.js';
 
 @Component({
@@ -22,8 +20,7 @@ export class ListingsComponent implements OnInit {
   constructor (
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private postService: PostService)
-    {}
+    private postService: PostService) {}
 
   ngOnInit(): void {
     this.userId = this.activatedRoute.snapshot.paramMap.get('userID');

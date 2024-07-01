@@ -1,12 +1,11 @@
-import { HttpInterceptorFn } from '@angular/common/http';
-import { HttpRequest, HttpHandlerFn, HttpEvent, HttpErrorResponse } from '@angular/common/http';
+import { HttpInterceptorFn,HttpRequest, HttpHandlerFn, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 export const errorInterceptor: HttpInterceptorFn = (request: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> => {
   return next(request).pipe(
     catchError((error: HttpErrorResponse) => {
-      const contextData: string = `
+      const contextData = `
         url requested: ${request.url}\n
         urlParams: ${request.params}\n
         body: ${request.body}

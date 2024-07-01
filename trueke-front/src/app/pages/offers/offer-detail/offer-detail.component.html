@@ -1,44 +1,44 @@
-<div class="fixed overflow-y-auto inset-0 flex justify-center items-center z-50" (click)="onCancel($event)">
+<div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center z-50 overflow-y-auto" (click)="onCancel($event)">
 
   <!-- Large screens -->
   <div class="hidden lg:flex w-full max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6 relative" (click)="$event.stopPropagation()">
     <!-- Post Details -->
-    <div class="w-full sm:w-1/2 h-full sm:h-auto p-4 border-r">
+    <div class="w-1/2 p-4 border-r">
       <h2 class="text-xl font-bold mb-4 text-center">Post Details</h2>
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" *ngFor="let image of postImages">
-            <img [src]="image" width="60" height="60" alt="Post Image" class="w-full h-64 object-cover mb-4 rounded-lg">
+      <swiper-container slides-per-view="1" speed="500" loop="true" css-mode="true" navigation="true">
+        @for (piece of offer?.post?.pieces; track $index) {
+        <swiper-slide>
+          <img [src]="piece.imageURL" alt="Post Image" class="w-full h-64 object-cover mb-2 rounded-lg">
+          <div class="w-full p-2">
+            <p class="text-sm font-bold">{{ piece.title }}</p>
+            <p class="text-sm">{{ piece.description }}</p>
           </div>
-        </div>
-      </div>
-      <h4 class="text-lg sm:text-xl font-bold mb-2 text-center">{{ offer?.post!.title }}</h4>
-      <p class="mb-4">{{ offer?.post!.description }}</p>
-      <div class="text-sm text-gray-600">
-        <p><strong>Posted by:</strong> {{ offer?.post!.user.name }}</p>
-        <p><strong>Date:</strong> {{ offer?.post!.created_at | date }}</p>
+        </swiper-slide>
+        }
+      </swiper-container>
+      <h4 class="text-lg font-bold mb-2">{{ offer?.post!.title }}</h4>
+      <p class="mb-2">{{ offer?.post!.description }}</p>
+      <div class="text-sm text-gray-600 text-center">
+        <p>{{ offer?.post!.user.name }} - {{ offer?.post!.created_at | date }}</p>
       </div>
     </div>
 
     <!-- Offer Details -->
-    <div class="w-full sm:w-1/2 h-full sm:h-auto p-4">
+    <div class="w-1/2 p-4">
       <h2 class="text-xl font-bold mb-4 text-center">Offer Details</h2>
+      <swiper-container slides-per-view="1" speed="500" loop="true" css-mode="true" navigation="true">
+        @for (piece of offer?.pieces; track $index) {
+        <swiper-slide>
+          <img [src]="piece.imageURL" alt="Piece Image" class="w-full h-64 object-cover mb-2 rounded-lg">
+          <div class="w-full p-2">
+            <p class="text-sm font-bold">{{ piece.title }}</p>
+            <p class="text-sm">{{ piece.description }}</p>
+          </div>
+        </swiper-slide>
+        }
+      </swiper-container>
       <h4 class="text-lg font-bold mb-2">Message:</h4>
       <p class="mb-4">{{ offer?.message }}</p>
-      <h4 class="text-lg font-bold mb-2">Pieces Offered:</h4>
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" *ngFor="let image of offerImages">
-            <img [src]="image" width="60" height="60" alt="Piece Image" class="w-full h-32 object-cover mb-2 rounded-lg">
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-wrap">
-        <div *ngFor="let piece of offer?.pieces" class="w-full sm:w-1/2 p-2">
-          <p class="text-sm font-bold">{{ piece.title }}</p>
-          <p class="text-sm">{{ piece.description }}</p>
-        </div>
-      </div>
     </div>
 
     <!-- Close Button -->
@@ -47,8 +47,8 @@
     </button>
   </div>
 
-  <!-- mobile screen -->
-  <div class="lg:hidden h-90 w-full h-full bg-white p-4 relative flex flex-col" (click)="$event.stopPropagation()">
+  <!-- Mobile screens -->
+  <div class="lg:hidden w-full h-full bg-white p-4 relative flex flex-col overflow-y-auto" (click)="$event.stopPropagation()">
     <!-- Close Button -->
     <button type="button" (click)="onCancel($event)" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 z-50">
       <i class="fas fa-times text-2xl"></i>
@@ -56,15 +56,21 @@
 
     <!-- Post Details -->
     <div class="w-full p-4 border-b flex flex-col">
-      <h2 class="text-xl sm:text-2xl font-bold mb-4">Post Details</h2>
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img *ngFor="let image of postImages" [src]="image" alt="Post Image" class="w-full h-64 object-cover mb-4 rounded-lg">
-          </div>
-        </div>
+      <h2 class="text-xl font-bold mb-4">Post Details</h2>
+      <div class="w-full md:w-1/2 mb-6 md:mb-0 relative">
+        <swiper-container slides-per-view="1" speed="500" loop="true" css-mode="true" navigation="true">
+          @for (piece of offer?.post?.pieces; track $index) {
+          <swiper-slide>
+            <img [src]="piece.imageURL" alt="Post Image" class="w-full h-64 object-cover mb-4 rounded-lg">
+            <div class="w-full p-2">
+              <p class="text-sm font-bold">{{ piece.title }}</p>
+              <p class="text-sm">{{ piece.description }}</p>
+            </div>
+          </swiper-slide>
+          }
+        </swiper-container>
       </div>
-      <h3 class="text-lg sm:text-xl font-bold mb-2 text-center">{{ offer?.post!.title }}</h3>
+      <h3 class="text-lg font-bold mb-2 text-center">{{ offer?.post!.title }}</h3>
       <p class="mb-4">{{ offer?.post!.description }}</p>
       <div class="text-sm text-gray-600">
         <p><strong>Posted by:</strong> {{ offer?.post!.user.name }}</p>
@@ -74,25 +80,23 @@
 
     <!-- Offer Details -->
     <div class="w-full p-4 flex flex-col">
-      <h2 class="text-xl sm:text-2xl font-bold mb-4">Offer Details</h2>
-      <h3 class="text-lg sm:text-xl font-bold mb-2">Message:</h3>
+      <h2 class="text-xl font-bold mb-4">Offer Details</h2>
+      <div class="w-full md:w-1/2 mb-6 md:mb-0 relative">
+        <swiper-container slides-per-view="1" speed="500" loop="true" css-mode="true" navigation="true">
+          @for (piece of offer?.pieces; track $index) {
+          <swiper-slide>
+            <img [src]="piece.imageURL" alt="Piece Image" class="w-full h-32 object-cover mb-2 rounded-lg">
+            <div class="w-full p-2">
+              <p class="text-sm font-bold">{{ piece.title }}</p>
+              <p class="text-sm">{{ piece.description }}</p>
+            </div>
+          </swiper-slide>
+          }
+        </swiper-container>
+      </div>
+      <h3 class="text-lg font-bold mb-2">Message:</h3>
       <p class="mb-4">{{ offer?.message }}</p>
-      <h3 class="text-lg sm:text-xl font-bold mb-2">Pieces Offered:</h3>
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img *ngFor="let image of offerImages" [src]="image" alt="Piece Image" class="w-full h-32 object-cover mb-2 rounded-lg">
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-wrap">
-        <div *ngFor="let piece of offer?.pieces" class="w-full sm:w-1/2 p-2">
-          <p class="text-sm font-bold">{{ piece.title }}</p>
-          <p class="text-sm">{{ piece.description }}</p>
-        </div>
-      </div>
     </div>
-
   </div>
 
 </div>
