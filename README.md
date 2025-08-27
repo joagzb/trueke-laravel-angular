@@ -7,8 +7,31 @@ Trueke facilitates the exchange of furniture items among individuals, promoting 
 - TailwindCSS
 - PostgreSQL
 
-## Run project
-Follow the instructions on each README file included in `trueke` and `trueke-front` folders.
+## Run project locally
+
+1. **Start the API**
+
+   ```bash
+   cd trueke
+   cp .env.example .env   # update database settings as needed
+   composer install
+   php artisan migrate --seed   # optional seed data
+   php artisan serve
+   ```
+
+   The API is available at [http://localhost:8000](http://localhost:8000).
+
+2. **Start the frontend**
+
+   ```bash
+   cd trueke-front
+   npm install
+   npm start
+   ```
+
+   Visit the app at [http://localhost:4200](http://localhost:4200).
+
+For additional details and Docker options, see the README files in `trueke` and `trueke-front`.
 
 ## Video Samples
 

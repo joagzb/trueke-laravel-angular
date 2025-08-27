@@ -1,6 +1,8 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {Observable} from 'rxjs';
 import {NewTruekeRequest, patchTruekeRequest} from '../models/trueke.js';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
