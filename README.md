@@ -31,6 +31,13 @@ Trueke facilitates the exchange of furniture items among individuals, promoting 
 
    Visit the app at [http://localhost:4200](http://localhost:4200).
 
+3. **Run frontend unit tests** (optional)
+
+   ```bash
+   cd trueke-front
+   npm test
+   ```
+
 For additional details and Docker options, see the README files in `trueke` and `trueke-front`.
 
 ## Video Samples
