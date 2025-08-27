@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {routesSchema} from '../config/routes.schema.js';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { routesSchema } from '../config/routes.schema';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 export class NavigationService {
   routes = routesSchema;
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) {}
 
   navigateTo(route: string, args?: string[]) {
     const resolvedRoute = this.resolveDynamicRoute(route, args ?? []);
@@ -19,10 +19,9 @@ export class NavigationService {
     const subUrls = route.split('/');
     const url = subUrls.reduce((previous, current) => {
       if (current.startsWith(':')) {
-        return `${previous + (args.pop() ?? '') }/`;
-      } else {
-        return `${previous + current }/`;
+        return `${previous}${args.shift() ?? ''}/`;
       }
+      return `${previous}${current}/`;
     }, '');
 
     return url;
