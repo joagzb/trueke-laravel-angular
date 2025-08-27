@@ -1,14 +1,15 @@
+import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import {getUserResponse} from '../models/user.js';
-import {routesSchema} from '../config/routes.schema.js';
-import {inject} from '@angular/core';
 
-export const isSignedInGuard: CanActivateFn = (route, state) => {
+import { routesSchema } from '../config/routes.schema.js';
+import { getUserResponse } from '../models/user.js';
+
+export const isSignedInGuard: CanActivateFn = () => {
   const router = inject(Router);
   const user: getUserResponse | null = JSON.parse(localStorage.getItem('user') || 'null');
-  if (user) {
-    return true;
-  }
-  return false;
+
+  if (user) return true;
+
   router.navigate([routesSchema.auth.signin]);
+  return false;
 };
