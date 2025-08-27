@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import {IOffer, patchOfferRequest} from '../../../models/offer.js';
+import {IOffer, patchOfferRequest} from '../../../models/offer';
 import Swiper from 'swiper';
 import {CommonModule} from '@angular/common';
-import {OfferService} from '../../../services/offer.service.js';
+import {OfferService} from '../../../services/offer.service';
 
 @Component({
   selector: 'liking-rejecting-offer-cards',
@@ -14,7 +14,7 @@ import {OfferService} from '../../../services/offer.service.js';
 export class LikingRejectingOfferCardsComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('swiperContainer', {static: false}) swiperContainer: ElementRef | undefined;
   @Input() offers: IOffer[] = [];
-  @Output() onFinishLiking = new EventEmitter<IOffer[]>;
+  @Output() onFinishLiking = new EventEmitter<IOffer[]>();
   availableOffers: IOffer[] = [];
   viewedOffers: IOffer[] = [];
   imageCarousel: Swiper | undefined;
